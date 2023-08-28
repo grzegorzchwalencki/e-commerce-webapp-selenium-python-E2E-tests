@@ -9,7 +9,7 @@ jobs:
     docker:
       - image: cimg/python:3.7-browsers
     executor: python/default 
-    steps:# use the default executor defined within the orb
+    steps:
       - checkout 
       - python/install-packages:
           pkg-manager: pip
