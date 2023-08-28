@@ -7,7 +7,7 @@ sign_in_tests = unittest.TestLoader().loadTestsFromTestCase(SignInTest)
 
 # List of tests to run
 tests_to_run = [
-    #create_account_tests,
+    create_account_tests,
     sign_in_tests
     # ... next test
 ]
