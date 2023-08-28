@@ -5,11 +5,11 @@ orbs:
   browser-tools: circleci/browser-tools@1.4.4
 
 jobs:
-  build-and-test: # this can be any name you choose
+  build-and-test: 
     docker:
       - image: cimg/python:3.7-browsers
-    executor: python/default # use the default executor defined within the orb
-    steps:
+    executor: python/default 
+    steps:# use the default executor defined within the orb
       - checkout 
       - python/install-packages:
           pkg-manager: pip
