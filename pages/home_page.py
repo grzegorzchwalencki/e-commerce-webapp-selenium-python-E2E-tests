@@ -2,6 +2,7 @@ from selenium import webdriver
 from pages.base_page import BasePage
 from pages.sign_in_page import SignInPage
 from pages.create_account_page import CreateAccountPage
+from pages.category_pages import CategoryPage
 from selenium.webdriver.common.by import By
 
 class Locators:
@@ -36,5 +37,10 @@ class HomePage(BasePage):
         #3. Return log in page
         return CreateAccountPage(self.driver)
     
-
+    def click_women_page(self):
+        """Click link to women category page"""
+        #1. Find element - (women page)
+        el_women_page = self.driver.find_element(*Locators.WOMEN_PAGE)
+        el_women_page.click()
+        return CategoryPage(self.driver)
     

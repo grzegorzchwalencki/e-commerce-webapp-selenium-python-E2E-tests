@@ -34,7 +34,7 @@ class CreateAccountTest(BaseTest):
         self.create_account_page.click_create_button()
         
         # EXPECTED RESULT
-        # 1. User get an information "This is required field."
+        # 1. User get an information "This is required field." under the first name field.
         # a) Find all error statements on current webpage
         # b) Check that the number of errors is equal to 1.
         # c) Check if error message is "This is required field"
@@ -118,6 +118,7 @@ class CreateAccountTest(BaseTest):
         self.create_account_page.click_create_button()
         
         # EXPECTED RESULT
+
         self.required_field_error(Locators.PASSWORD_CONF_ERROR)
 
     def test_wrong_email_format(self):
@@ -138,10 +139,11 @@ class CreateAccountTest(BaseTest):
     
         # EXPECTED RESULT
         # 1. User get an information "Please enter a valid email address (Ex: johndoe@domain.com)."
+        expected_msg = "Please enter a valid email address (Ex: johndoe@domain.com)."
         # a) Check if error appear by locator
         user_error_msg = self.driver.find_elements(*Locators.EMAIL_ERROR)
         # b) Check if error message is correct.
-        self.assertEqual("Please enter a valid email address (Ex: johndoe@domain.com).", user_error_msg[0].text)
+        self.assertEqual(expected_msg, user_error_msg[0].text)
 
     def test_too_short_password_entered(self):
         # 1. Click Create an Account
@@ -161,7 +163,7 @@ class CreateAccountTest(BaseTest):
     
         # EXPECTED RESULT
         # 1. User get an information "Minimum length of this field must be equal or 
-        # greater than 8 symbols. Leading and trailing spaces will be ignored."
+        # greater than 8 symbols. Leading and trailing spaces will be ignored." under the password field.
         expected_msg = "Minimum length of this field must be equal or greater than 8 symbols. Leading and trailing spaces will be ignored."
         # a) Check if error appear by locator
         user_error_msg = self.driver.find_elements(*Locators.PASSWORD_ERROR)
@@ -185,7 +187,7 @@ class CreateAccountTest(BaseTest):
         self.create_account_page.click_create_button()
     
         # EXPECTED RESULT
-        # 1. User get an information "Please enter the same value again."
+        # 1. User get an information "Please enter the same value again." under the confirmation password field.
         expected_msg = "Please enter the same value again."
         # a) Check if error appear by locator
         user_error_msg = self.driver.find_elements(*Locators.PASSWORD_CONF_ERROR)

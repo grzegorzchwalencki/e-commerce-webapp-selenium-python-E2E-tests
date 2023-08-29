@@ -27,7 +27,7 @@ class CreateAccountPage(BasePage):
         wait.until(EC.visibility_of_element_located(Locators.EMAIL_INPUT))
         wait.until(EC.visibility_of_element_located(Locators.PASSWORD_INPUT))
         wait.until(EC.visibility_of_element_located(Locators.PASSWORD_CONFIRMATION_INPUT))
-        pass
+
     def enter_firstname(self, username):
         """Enter firstname"""
         el_first_name = self.driver.find_element(*Locators.FIRST_NAME_INPUT)

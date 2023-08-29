@@ -1,8 +1,6 @@
 import sys
 sys.path.append(sys.path[0]+"/..")
 
-import unittest
-#from ddt import ddt, data, unpack
 from tests.base_test import BaseTest
 from pages.sign_in_page import Locators
 from selenium.webdriver.common.by import By 
@@ -27,10 +25,7 @@ class SignInTest(BaseTest):
         self.sign_in_page.click_sing_in_button()
         
         # EXPECTED RESULT
-        # 1. User get an information "This is required field."
-        # a) Find all error statements on current webpage
-        # b) Check that the number of errors is equal to 1.
-        # c) Check if error message is "This is required field"
+        # 1. User get an information "This is required field." under the email field.
         self.required_field_error(Locators.EMAIL_ERROR)
 
     def test_no_lastname_entered(self):
@@ -46,6 +41,7 @@ class SignInTest(BaseTest):
         self.sign_in_page.click_sing_in_button()
         
         # EXPECTED RESULT
+        # 1. User get an information "This is required field." under the password field.
         self.required_field_error(Locators.PASSWORD_ERROR)
 
     def test_wrong_format_email_entered(self):
@@ -61,7 +57,7 @@ class SignInTest(BaseTest):
         self.sign_in_page.click_sing_in_button()
         
         # EXPECTED RESULT
-        # 1. User get an information "Please enter the same value again."
+        # 1. User get an information "Please enter a valid email address (Ex: johndoe@domain.com)." under the email field.
         expected_msg = "Please enter a valid email address (Ex: johndoe@domain.com)."
         # a) Check if error appear by locator
         user_error_msg = self.driver.find_elements(*Locators.EMAIL_ERROR)
