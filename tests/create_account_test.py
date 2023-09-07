@@ -4,7 +4,7 @@ sys.path.append(sys.path[0]+"/..")
 import unittest
 #from ddt import ddt, data, unpack
 from tests.base_test import BaseTest
-from pages.create_account_page import Locators
+from pages.create_account_page import Locators, CreateAccountPage
 from selenium.webdriver.common.by import By 
 
 
@@ -12,9 +12,10 @@ class CreateAccountTest(BaseTest):
     """Create Account tests"""
     def setUp(self):
         super().setUp()
-        self.create_account_page = self.home_page.click_create_account()
+        self.driver.get("https://magento.softwaretestingboard.com/customer/account/create/")
+        self.create_account_page = CreateAccountPage(self.driver)
     
-# TESTS WITH NO ENTERED CONTENT IN REQUESTED FIELD
+
     def test_no_firstname_enter(self):
         """Test create account with no first name entered"""
         # Steps

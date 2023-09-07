@@ -2,14 +2,15 @@ import sys
 sys.path.append(sys.path[0]+"/..")
 
 from tests.base_test import BaseTest
-from pages.sign_in_page import Locators
+from pages.sign_in_page import Locators, SignInPage
 from selenium.webdriver.common.by import By 
 
 class SignInTest(BaseTest):
     """Sign In tests"""
     def setUp(self):
         super().setUp()
-        self.sign_in_page = self.home_page.click_sign_in()
+        self.driver.get("https://magento.softwaretestingboard.com/customer/account/login/referer/")
+        self.sign_in_page = SignInPage(self.driver)
 
 # TESTS WITH NO ENTERED CONTENT IN REQUESTED FIELD
     def test_no_email_enter(self):
