@@ -14,7 +14,7 @@ class CreateAccountTest(BaseTest):
         super().setUp()
         self.create_account_page = self.home_page.click_create_account()
     
-# TESTS WITH NO ENTERED CONTENT IN REQUESTED FIELD
+
     def test_no_firstname_enter(self):
         """Test create account with no first name entered"""
         # Steps

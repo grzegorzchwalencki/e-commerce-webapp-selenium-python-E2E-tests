@@ -4,45 +4,25 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class Locators:
+    """Locators on Category Pages"""
     PAGE_HEADER = (By.XPATH, '//span[@data-ui-id="page-title-wrapper"]')
-    TOPS_CATEGORY = (By.XPATH, '//a[text()="Tops"]/@href') #
-    BOTTOMS_CATEGORY = (By.XPATH, '//a[text()="Bottoms"]/@href')
+    TOPS_CATEGORY = (By.XPATH, '//li[@class="item"]//a[text()="Tops"]')
+    BOTTOMS_CATEGORY = (By.XPATH, '//li[@class="item"]//a//a[text()="Bottoms"]')
     JACKETS_CATEGORY = (By.XPATH, '//a[text()="Jackets"]/@href')
     LIMITER_ITEMS_ON_PAGE = (By.XPATH, '//select[@id="limiter"]')
 
 
 class CategoryPage(BasePage):
+    
     def _verify_page(self):
         wait = WebDriverWait(self.driver, 3)
         wait.until(EC.visibility_of_element_located(Locators.TOPS_CATEGORY))
         wait.until(EC.visibility_of_element_located(Locators.BOTTOMS_CATEGORY))
 
-    def open_tops_category(self):
-        """Open Tops category page"""
-        el_tops = self.driver.find_element(*Locators.TOPS_CATEGORY)
-        el_tops.click()
+    def open_women_tops_category_from_ribbon(self):
+        """Open Women Tops category page"""
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     def open_bottoms_category(self):
         el_bottoms = self.driver.find_element(*Locators.BOTTOMS_CATEGORY)
         el_bottoms.click()

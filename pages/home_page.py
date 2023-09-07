@@ -37,10 +37,8 @@ class HomePage(BasePage):
         #3. Return log in page
         return CreateAccountPage(self.driver)
     
-    def click_women_page(self):
-        """Click link to women category page"""
-        #1. Find element - (women page)
-        el_women_page = self.driver.find_element(*Locators.WOMEN_PAGE)
-        el_women_page.click()
+    def category_page(self):
+        el_women_category = self.driver.find_element(*Locators.WOMEN_PAGE)
+        el_women_category.click()
         return CategoryPage(self.driver)
     
