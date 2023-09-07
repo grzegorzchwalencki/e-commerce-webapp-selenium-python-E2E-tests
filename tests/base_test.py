@@ -13,8 +13,7 @@ class BaseTest(unittest.TestCase):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(5)
         self.driver.maximize_window()
-        self.driver.get("https://magento.softwaretestingboard.com/")
-        self.home_page = HomePage(self.driver)
+
 
     def required_field_error(self, field_error_locator):
         """ Method to check if expected error message 

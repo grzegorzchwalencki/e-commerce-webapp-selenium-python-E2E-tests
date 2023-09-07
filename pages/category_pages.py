@@ -7,7 +7,7 @@ class Locators:
     """Locators on Category Pages"""
     PAGE_HEADER = (By.XPATH, '//span[@data-ui-id="page-title-wrapper"]')
     TOPS_CATEGORY = (By.XPATH, '//li[@class="item"]//a[text()="Tops"]')
-    BOTTOMS_CATEGORY = (By.XPATH, '//li[@class="item"]//a//a[text()="Bottoms"]')
+    BOTTOMS_CATEGORY = (By.CSS_SELECTOR, 'dd ol.items li.item a')
     JACKETS_CATEGORY = (By.XPATH, '//a[text()="Jackets"]/@href')
     LIMITER_ITEMS_ON_PAGE = (By.XPATH, '//select[@id="limiter"]')
 
