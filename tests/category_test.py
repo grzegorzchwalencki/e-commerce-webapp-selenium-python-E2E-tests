@@ -17,10 +17,14 @@ class WomenCategoryTest(BaseTest):
     def test_open_tops_category(self):
         """Test OPEN"""
         self.category_page.open_women_tops_category()
-        self.category_page.change_item_amount_on_page()
-
-        
-    
+        self.category_page.change_item_amount_on_page_to_36()
+        sleep(1)
+        #Expected result
+        #1. Find all items displayed after changing item amount on page to 36.
+        #2. Check lenght of result list of items
+        current_items_on_page = self.category_page.amount_of_all_displayed_items_on_page()
+        #3. Compere amount of items on page to expected value
+        self.assertEqual(current_items_on_page, int("36") )
         
    
     
