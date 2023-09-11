@@ -31,35 +31,26 @@ class CreateAccountPage(BasePage):
     def enter_firstname(self, username):
         """Enter firstname"""
         el_first_name = self.driver.find_element(*Locators.FIRST_NAME_INPUT)
-        # Enter first name
         el_first_name.send_keys(username)
 
     def enter_lastname(self, lastname):
         """Enter lastname"""
-        # Find lastname field
         el_last_name = self.driver.find_element(*Locators.LAST_NAME_INPUT)
-        # Enter last name
         el_last_name.send_keys(lastname)
 
     def enter_email(self, email):
         """Enter email"""
-        # Find email field
         el_email = self.driver.find_element(*Locators.EMAIL_INPUT)
-        # Enter email
         el_email.send_keys(email)
 
     def enter_password(self, password):
         """Enter password"""
-        # Find password field
         el_password = self.driver.find_element(*Locators.PASSWORD_INPUT)
-        # Enter password
         el_password.send_keys(password)
 
-    def enter_password_con(self, password_con):
+    def enter_password_confirmation(self, password_con):
         """Enter password to confirm"""
-        # Find password confirmation field
         el_password_con = self.driver.find_element(*Locators.PASSWORD_CONFIRMATION_INPUT)
-        # Enter password confirmation
         el_password_con.send_keys(password_con)
     
     def click_create_button(self):

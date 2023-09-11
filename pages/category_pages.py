@@ -6,10 +6,10 @@ from selenium.webdriver.support import expected_conditions as EC
 class Locators:
     """Locators on Category Pages"""
     PAGE_HEADER = (By.XPATH, '//span[@data-ui-id="page-title-wrapper"]')
-    TOPS_CATEGORY = (By.XPATH, '//li[@class="item"]//a[text()="Tops"]')
+    TOPS_CATEGORY = (By.CSS_SELECTOR, 'dd ol.items li.item a')
     BOTTOMS_CATEGORY = (By.CSS_SELECTOR, 'dd ol.items li.item a')
     JACKETS_CATEGORY = (By.XPATH, '//a[text()="Jackets"]/@href')
-    LIMITER_ITEMS_ON_PAGE = (By.XPATH, '//select[@id="limiter"]')
+    LIMITER_ITEMS_ON_PAGE_SET_36 = (By.XPATH, '//select[@id="limiter"]//option[@value="36"]')
 
 
 class CategoryPage(BasePage):
@@ -19,20 +19,20 @@ class CategoryPage(BasePage):
         wait.until(EC.visibility_of_element_located(Locators.TOPS_CATEGORY))
         wait.until(EC.visibility_of_element_located(Locators.BOTTOMS_CATEGORY))
 
-    def open_women_tops_category_from_ribbon(self):
-        """Open Women Tops category page"""
-
+    def open_women_tops_category(self):
+        el_tops = self.driver.find_elements(*Locators.TOPS_CATEGORY)
+        el_tops[0].click()
 
     def open_bottoms_category(self):
-        el_bottoms = self.driver.find_element(*Locators.BOTTOMS_CATEGORY)
-        el_bottoms.click()
+        el_bottoms = self.driver.find_elements(*Locators.BOTTOMS_CATEGORY)
+        el_bottoms[1].click()
 
     def open_jackets_category(self):
         el_jackets = self.driver.find_element(*Locators.JACKETS_CATEGORY)
         el_jackets.click()   
 
     def change_item_amount_on_page(self):
-        els_item_amount = self.driver.find_elements(*Locators.LIMITER_ITEMS_ON_PAGE)
+        els_item_amount = self.driver.find_elements(*Locators.LIMITER_ITEMS_ON_PAGE_SET_36)
         el_item_amount = [i for i in els_item_amount if i.is_displayed()]
         el_item_amount[0].click()
 

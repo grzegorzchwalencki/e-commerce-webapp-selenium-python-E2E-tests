@@ -21,20 +21,14 @@ class HomePage(BasePage):
     
     def click_sign_in(self):
         """Click link to sing in page"""
-        #1. Find element - (sign in)
         el_sign_in = self.driver.find_element(*Locators.SIGN_IN_LINK)
-        #2. Click sing in button
         el_sign_in.click()
-        #3. Return log in page
         return SignInPage(self.driver)
     
     def click_create_account(self):
         """Click link to create account page"""
-        #1. Find element - (create account)
         el_crea_acc = self.driver.find_element(*Locators.CREATE_ACCOUNT_LINK)
-        #2. Click 
         el_crea_acc.click()
-        #3. Return log in page
         return CreateAccountPage(self.driver)
     
     def category_page(self):
