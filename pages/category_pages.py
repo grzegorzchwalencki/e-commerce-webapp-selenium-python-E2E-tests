@@ -11,6 +11,8 @@ class Locators:
     JACKETS_CATEGORY = (By.XPATH, '//a[text()="Jackets"]/@href')
     LIMITER_ITEMS_ON_PAGE_SET_36 = (By.XPATH, '//select[@id="limiter"]//option[@value="36"]')
     ITEM_IMAGE_ON_PAGE = (By.XPATH, '//img[@class="product-image-photo"]')
+    SORTER_BY_PRICE = (By.XPATH, '//select[@id="sorter"]//option[@value="price"]')
+    PRICE_OF_PRODUCT_ON_LIST = (By.XPATH '//span[@class="price"]')
 
 class CategoryPage(BasePage):
     
@@ -41,4 +43,13 @@ class CategoryPage(BasePage):
         els_displayed_items_on_page = self.driver.find_elements(*Locators.ITEM_IMAGE_ON_PAGE)
         return len(els_displayed_items_on_page)
     
-    # Sort items
+    def sort_items_by_price(self):
+        el_sort_items = self.driver.find_element(*Locators.SORTER_BY_PRICE)
+        el_sort_items.click()
+    
+    def all_products_displayed_list_by_price(self):
+        els_items_prices = self.driver.find_elements(*Locators.PRICE_OF_PRODUCT_ON_LIST)
+        return els_items_prices
+    
+#    def check_properly_sorted_items_by_price_ascending(self):
+#        pass

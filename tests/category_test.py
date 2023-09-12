@@ -14,7 +14,7 @@ class WomenCategoryTest(BaseTest):
         self.category_page = CategoryPage(self.driver)        
 
 
-    def test_open_tops_category(self):
+    def test_change_displayed_items_amount_on_WomenTopsCategoryPage(self):
         """Test OPEN"""
         self.category_page.open_women_tops_category()
         self.category_page.change_item_amount_on_page_to_36()
@@ -26,5 +26,12 @@ class WomenCategoryTest(BaseTest):
         #3. Compere amount of items on page to expected value
         self.assertEqual(current_items_on_page, int("36") )
         
-   
-    
+    def test_sort_items_by_price_WomenBottomCategoryPage(self):
+        self.category_page.open_bottoms_category()
+        self.category_page.sort_items_by_price()
+        sleep(3)
+        #Expected result
+        #1. Find all prices and make a list of it
+        self.category_page.all_products_displayed_list_by_price()
+        #2. Check if products are displayed in ascending order looking on price 
+        

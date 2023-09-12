@@ -12,7 +12,6 @@ class SignInTest(BaseTest):
         self.driver.get("https://magento.softwaretestingboard.com/customer/account/login/referer/")
         self.sign_in_page = SignInPage(self.driver)
 
-# TESTS WITH NO ENTERED CONTENT IN REQUESTED FIELD
     def test_no_email_enter(self):
         self.sign_in_page.enter_pass("Testtest!")
         self.sign_in_page.click_sing_in_button()
