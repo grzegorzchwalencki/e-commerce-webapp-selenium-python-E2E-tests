@@ -12,7 +12,7 @@ class Locators:
     LIMITER_ITEMS_ON_PAGE_SET_36 = (By.XPATH, '//select[@id="limiter"]//option[@value="36"]')
     ITEM_IMAGE_ON_PAGE = (By.XPATH, '//img[@class="product-image-photo"]')
     SORTER_BY_PRICE = (By.XPATH, '//select[@id="sorter"]//option[@value="price"]')
-    PRICE_OF_PRODUCT_ON_LIST = (By.XPATH '//span[@class="price"]')
+    PRICE_OF_PRODUCT_ON_LIST = (By.XPATH ,'//span[@class="price"]')
 
 class CategoryPage(BasePage):
     
