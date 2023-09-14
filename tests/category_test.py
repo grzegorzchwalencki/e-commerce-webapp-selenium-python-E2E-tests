@@ -16,9 +16,10 @@ class WomenCategoryTest(BaseTest):
 
     def test_change_displayed_items_amount_on_WomenTopsCategoryPage(self):
         """Test OPEN"""
-        self.category_page.open_women_tops_category()
+        self.category_page.open_tops_category()
+        sleep(1) #To change
         self.category_page.change_item_amount_on_page_to_36()
-        sleep(1)
+        sleep(2) #To change
         #Expected result
         #1. Find all items displayed after changing item amount on page to 36.
         #2. Check lenght of result list of items
@@ -26,12 +27,15 @@ class WomenCategoryTest(BaseTest):
         #3. Compere amount of items on page to expected value
         self.assertEqual(current_items_on_page, int("36") )
         
-    def test_sort_items_by_price_WomenBottomCategoryPage(self):
-        self.category_page.open_bottoms_category()
+    def test_sort_items_by_price_WomenTopsCategoryPage(self):
+        self.category_page.open_tops_category()
+        sleep(1) #To change
         self.category_page.sort_items_by_price()
-        sleep(3)
-        #Expected result
-        #1. Find all prices and make a list of it
-        self.category_page.all_products_displayed_list_by_price()
-        #2. Check if products are displayed in ascending order looking on price 
-        
+        sleep(1) #To change
+
+        result_items_order_after_sorting = self.category_page.all_products_sorted_by_price()
+        properly_items_order_after_sorting = self.category_page.properly_sorted_items_by_price_ascending()
+
+        self.assertEqual(result_items_order_after_sorting , properly_items_order_after_sorting)
+
+

@@ -9,8 +9,8 @@ category_tests = unittest.TestLoader().loadTestsFromTestCase(WomenCategoryTest)
 
 # List of tests to run
 tests_to_run = [
-    #create_account_tests,
-    #sign_in_tests,
+    create_account_tests,
+    sign_in_tests,
     category_tests
 ]
 

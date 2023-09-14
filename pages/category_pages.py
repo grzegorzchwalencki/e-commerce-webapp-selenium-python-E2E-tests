@@ -22,7 +22,7 @@ class CategoryPage(BasePage):
         wait.until(EC.visibility_of_element_located(Locators.BOTTOMS_CATEGORY))
 
 
-    def open_women_tops_category(self):
+    def open_tops_category(self):
         el_tops = self.driver.find_elements(*Locators.TOPS_CATEGORY)
         el_tops[0].click()
 
@@ -47,9 +47,16 @@ class CategoryPage(BasePage):
         el_sort_items = self.driver.find_element(*Locators.SORTER_BY_PRICE)
         el_sort_items.click()
     
-    def all_products_displayed_list_by_price(self):
+    def all_products_sorted_by_price(self):
         els_items_prices = self.driver.find_elements(*Locators.PRICE_OF_PRODUCT_ON_LIST)
-        return els_items_prices
+        els_items_prices = [i for i in els_items_prices if i.is_displayed()]
+        products_order_after_sorting_by_price = [] 
+        for price in els_items_prices:
+            products_order_after_sorting_by_price.append(price.text)
+        return products_order_after_sorting_by_price
     
-#    def check_properly_sorted_items_by_price_ascending(self):
-#        pass
+    def properly_sorted_items_by_price_ascending(self):
+        items_on_page = self.all_products_sorted_by_price()
+        items_on_page.sort()
+        return items_on_page
+
