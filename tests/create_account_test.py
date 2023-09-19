@@ -35,7 +35,6 @@ class CreateAccountTest(BaseTest):
         self.create_account_page.enter_password_confirmation("Testtest!")
         self.create_account_page.click_create_button()
         
-        # EXPECTED RESULT
         self.required_field_error(Locators.LAST_NAME_ERROR)
 
     def test_Create_an_account_no_email_entered(self):
@@ -45,7 +44,6 @@ class CreateAccountTest(BaseTest):
         self.create_account_page.enter_password_confirmation("Testtest!")
         self.create_account_page.click_create_button()
         
-        # EXPECTED RESULT
         self.required_field_error(Locators.EMAIL_ERROR)
 
     def test_Create_an_account_no_password_entered(self):
@@ -55,7 +53,6 @@ class CreateAccountTest(BaseTest):
         self.create_account_page.enter_password_confirmation("Testtest!")
         self.create_account_page.click_create_button()
         
-        # EXPECTED RESULT
         self.required_field_error(Locators.PASSWORD_ERROR)
 
     def test_Create_an_account_no_password_confirmation_entered(self):
@@ -65,7 +62,6 @@ class CreateAccountTest(BaseTest):
         self.create_account_page.enter_password("Testtest!")
         self.create_account_page.click_create_button()
         
-        # EXPECTED RESULT
         self.required_field_error(Locators.PASSWORD_CONF_ERROR)
 
     def test_Create_an_account_wrong_email_format(self):
