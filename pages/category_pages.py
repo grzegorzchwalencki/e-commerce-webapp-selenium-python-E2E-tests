@@ -22,6 +22,8 @@ class CategoryPage(BasePage):
         wait.until(EC.visibility_of_element_located(Locators.BOTTOMS_CATEGORY))
 
 
+
+
     def open_tops_category(self):
         el_tops = self.driver.find_elements(*Locators.TOPS_CATEGORY)
         el_tops[0].click()
