@@ -1,5 +1,4 @@
 from selenium.webdriver.common.alert import Alert
-from selenium.webdriver.support.wait import WebDriverWait
 
 class BasePage():
     """ Base class, methods that all pages can use"""
