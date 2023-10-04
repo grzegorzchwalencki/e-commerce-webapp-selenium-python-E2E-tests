@@ -2,17 +2,16 @@ version: 2.1
 
 orbs:
   python: circleci/python@2.1.1
-  browser-tools: circleci/browser-tools@1.4.4
+  browser-tools: circleci/browser-tools@1.4.6
 
 jobs:
   build-and-test: 
     docker:
-      - image: cimg/python:3.7-browsers
+      - image: cimg/3.10-browsers
     executor: python/default 
     steps:
       - checkout 
-      - run:
-          command: python -m pip install --upgrade pip
+      - browser-tools/install-browser-tools
       - python/install-packages:
           pkg-manager: pip
           pip-dependency-file: "requirements.txt"
