@@ -11,6 +11,8 @@ jobs:
     executor: python/default 
     steps:
       - checkout 
+      - run:
+        python -m pip install --upgrade pip
       - python/install-packages:
           pkg-manager: pip
           pip-dependency-file: "requirements.txt"
