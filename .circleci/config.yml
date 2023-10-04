@@ -7,7 +7,7 @@ orbs:
 jobs:
   build-and-test: 
     docker:
-      - image: cimg/3.10-browsers
+      - image: cimg/python:3.10-browsers
     executor: python/default 
     steps:
       - checkout 
