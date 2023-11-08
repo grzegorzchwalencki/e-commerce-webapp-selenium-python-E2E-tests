@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   python: circleci/python@2.1.1
 
-
 jobs:
   build-and-test: 
     docker:
@@ -18,8 +17,13 @@ jobs:
           pkg-manager: pip
           pip-dependency-file: "requirements.txt"
       - run:
-          name: Run tests
-          command: python3 run_tests.py
+          name: run tests
+          command: |
+            . venv/bin/activate
+            mkdir test-results
+            pytest --junitxml=test-results/junit.xml tests
+      - store_test_results:
+          path: test-results
 
 workflows:
   build_test:
