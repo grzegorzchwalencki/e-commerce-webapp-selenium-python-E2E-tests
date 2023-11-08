@@ -4,6 +4,7 @@ sys.path.append(sys.path[0]+"/..")
 from tests.base_test import BaseTest
 from pages.sign_in_page import Locators, SignInPage
 from selenium.webdriver.common.by import By 
+from tests.test_data import TestData
 
 class SignInTest(BaseTest):
     """Sign In tests"""
@@ -11,9 +12,10 @@ class SignInTest(BaseTest):
         super().setUp()
         self.driver.get("https://magento.softwaretestingboard.com/customer/account/login/referer/")
         self.sign_in_page = SignInPage(self.driver)
+        self.test_data = TestData()
 
     def test_no_email_enter(self):
-        self.sign_in_page.enter_pass("Testtest!")
+        self.sign_in_page.enter_pass(self.test_data.password)
         self.sign_in_page.click_sing_in_button()
         
         # EXPECTED RESULT
@@ -22,7 +24,7 @@ class SignInTest(BaseTest):
 
     def test_sign_in_no_password_entered(self):
         """Test sign in with no password entered"""
-        self.sign_in_page.enter_email("test@test.pl")
+        self.sign_in_page.enter_email(self.test_data.email)
         self.sign_in_page.click_sing_in_button()
         
         # EXPECTED RESULT
@@ -31,8 +33,8 @@ class SignInTest(BaseTest):
 
     def test_sign_in_wrong_format_email_entered(self):
         """Test sign in with no password entered"""
-        self.sign_in_page.enter_email("test.pl")
-        self.sign_in_page.enter_pass("Testtest!")
+        self.sign_in_page.enter_email(self.test_data.firstname)
+        self.sign_in_page.enter_pass(self.test_data.password)
         self.sign_in_page.click_sing_in_button()
         
         # EXPECTED RESULT
