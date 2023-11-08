@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   python: circleci/python@2.1.1
 
-
 jobs:
   build-and-test: 
     docker:
@@ -11,15 +10,23 @@ jobs:
     executor: python/default 
     steps:
       - checkout 
+      - run:
+          name: update pip
+          command: pip install --upgrade pip
       - python/install-packages:
           pkg-manager: pip
           pip-dependency-file: "requirements.txt"
       - run:
-          name: Run tests
-          command: python3 run_tests.py
+          name: run tests
+          command: |
+            mkdir test-results
+            pytest --junitxml=test-results/junit.xml run_test.py
+      - store_test_results:
+          path: test-results
 
 workflows:
   build_test:
     jobs:
       - build-and-test
+
 

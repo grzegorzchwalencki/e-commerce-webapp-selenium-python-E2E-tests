@@ -17,6 +17,3 @@ tests_to_run = [
 
 # Create Test Suite - join tests
 test_suite = unittest.TestSuite(tests_to_run)
-
-# Run tests
-unittest.TextTestRunner().run(test_suite)
